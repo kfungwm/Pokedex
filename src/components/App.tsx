@@ -13,7 +13,7 @@ const App = () => {
   const [allPokemon, setAllPokemon] = useState<any>({})
 
   const fetchPokemonData = async (totalPoke: any) => {
-    const pokemonData = {}
+    const pokemonData: Record<number, any> = {}
 
     for (let i = 1; i <= totalPoke; i++) {
       try {
@@ -49,7 +49,7 @@ const App = () => {
       ) : (
         <div className="flex mx-auto justify-center items-center  flex-row flex-wrap ">
           {' '}
-          {Object.values(allPokemon).map((pokemon, index) => (
+          {Object.values(allPokemon).map((pokemon: any, index: number) => (
             <div
               key={index}
               className="w-[220px] h-[90px] p-3 bg-white flex m-1 rounded-lg relative justify-between"
@@ -64,7 +64,7 @@ const App = () => {
                   {pokemon.name}
                 </div>{' '}
                 <div className="flex flex-wrap gap-1 mb-1">
-                  {pokemon.types.map((type, index) => (
+                  {pokemon.types.map((type: any, index: number) => (
                     <span
                       key={index}
                       className={` capitalize px-[10px] py-[2px] border border-solid rounded-md text-xs ${getTypeColor(
