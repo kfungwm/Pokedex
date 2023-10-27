@@ -11,7 +11,7 @@ const LoadingSpinner: React.FC = () => {
       y="0px"
       viewBox="0 0 800 600"
       enableBackground="new 0 0 800 600"
-      className="w-[500px] h-[500px]"
+      className="w-[300px] h-[300px] sm:w-[700px] sm:h-[500px]"
     >
       <style>{`.st0{fill: ${styles.fill}; stroke: ${styles.stroke}; stroke-width: ${styles.strokeWidth}; stroke-miterlimit: ${styles.strokeMiterLimit};}`}</style>
 

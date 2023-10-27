@@ -3,7 +3,7 @@ import App from '../components/App'
 
 export default function Home() {
   return (
-    <main className="item-center justify-center text-center mx-auto mt-10">
+    <main className="max-w-[1500px] item-center justify-center text-center mx-auto ">
       <App />
     </main>
   )
