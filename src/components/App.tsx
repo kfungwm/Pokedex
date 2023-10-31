@@ -3,14 +3,17 @@
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import axios from 'axios'
-import Pokemon from './Pokemon'
 import LoadingSpinner from './LoadingSpinner'
 import { getTypeColor } from './TypeColor'
+import Link from 'next/link'
+import Image from 'next/image'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
   const [allPokemon, setAllPokemon] = useState({})
+  // const router = useRouter()
 
   useEffect(() => {
     axios.get('https://pokeapi.co/api/v2/pokedex/national/').then((res) => {
@@ -32,29 +35,31 @@ const App = () => {
         <div className="flex mx-auto justify-center items-center  flex-row flex-wrap ">
           {' '}
           {Object.values(allPokemon).map((pokemon: any, index: number) => (
-            <div
-              key={index}
-              className="w-[150px] h-[110px] px-3 py-4 bg-white flex m-1 rounded-lg relative justify-center shadow-xl"
-            >
-              {' '}
-              <span className=" text-[#9ca3af] text-xs px-2 pt-1 absolute top-0 right-0">
-                #{pokemon.entry_number}
-              </span>
-              <div>
-                <div className=" flex justify-center">
-                  <div className="text-[#1d4ed8] capitalize font-extrabold mb-1">
-                    {' '}
-                    {pokemon.pokemon_species['name']}
-                  </div>{' '}
-                </div>
-                <div className="items-center justify-center align-middle self-center flex">
-                  <img
-                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.entry_number}.png`}
-                    className="w-[50px]"
-                  />
+            <Link href={`/pokemon/${pokemon.entry_number}`} key={index}>
+              <div className="w-[150px] h-[110px] px-3 py-4 bg-white flex m-1 rounded-lg relative justify-center shadow-xl">
+                {' '}
+                <span className=" text-[#9ca3af] text-xs px-2 pt-1 absolute top-0 right-0">
+                  #{pokemon.entry_number}
+                </span>
+                <div>
+                  <div className=" flex justify-center">
+                    <div className="text-[#1d4ed8] capitalize font-extrabold mb-1">
+                      {' '}
+                      {pokemon.pokemon_species['name']}
+                    </div>{' '}
+                  </div>
+                  <div className="items-center justify-center align-middle self-center flex">
+                    <Image
+                      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.entry_number}.png`}
+                      className="w-[50px]"
+                      alt={pokemon.pokemon_species['name']}
+                      width={50}
+                      height={50}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}{' '}
         </div>
       )}
