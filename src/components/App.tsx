@@ -13,7 +13,6 @@ import Image from 'next/image'
 const App = () => {
   const [loading, setLoading] = useState(true)
   const [allPokemon, setAllPokemon] = useState({})
-  // const router = useRouter()
 
   useEffect(() => {
     axios.get('https://pokeapi.co/api/v2/pokedex/national/').then((res) => {
