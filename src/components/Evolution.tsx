@@ -84,7 +84,7 @@ function Type(data: any) {
         )}
         <div
           className={
-            secondEvo.length > 5
+            secondEvo.length > 2
               ? 'flex justify-center flex-row flex-wrap gap-3'
               : 'flex justify-center flex-row md:flex-col flex-wrap '
           }

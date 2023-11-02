@@ -112,7 +112,7 @@ const App = (props: any) => {
   return (
     <div className="max-w-[1200px] flex mx-auto  gap-5 items-center  mt-10 ">
       {loading ? (
-        <div className="flex h-screen items-center">
+        <div className="w-full flex justify-center h-screen items-center">
           <LoadingSpinner />
         </div>
       ) : (
