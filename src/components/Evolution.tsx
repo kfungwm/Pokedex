@@ -45,7 +45,7 @@ function Type(data: any) {
 
   useEffect(() => {
     fetchEvolutionData(url)
-  }, [])
+  }, [url])
 
   function onlyId(props: string) {
     const id = props
