@@ -34,7 +34,7 @@ const App = () => {
         <div>
           <div className="w-full flex justify-center mb-5">
             <Image
-              src="/pokemon_logo.svg"
+              src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg"
               className=""
               alt="Logo"
               width={250}

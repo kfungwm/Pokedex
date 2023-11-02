@@ -2,7 +2,7 @@
 const nextConfig = {
   distDir: 'build',
   output: 'export',
-  basePath: '/Pokedex',
+  // basePath: '/Pokedex',
   images: {
     unoptimized: true,
   },
