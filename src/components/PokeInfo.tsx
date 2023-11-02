@@ -15,8 +15,6 @@ function Type(props: any) {
     ? englishFlavorTextEntry.flavor_text
     : 'No English flavor text found'
 
-  console.log('english', englishText)
-
   return (
     <div className="">
       <div className="text-start mb-2">

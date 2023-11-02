@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 function Type(data: any) {
   const url = data.data
-  console.log(url)
+  // console.log(url)
 
   interface evoStruct {
     name: string
@@ -52,7 +52,7 @@ function Type(data: any) {
       .split('/')
       .filter((str: any) => str !== '')
       .pop()
-    console.log('id', id)
+    // console.log('id', id)
     return id
   }
 

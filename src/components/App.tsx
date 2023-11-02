@@ -16,14 +16,14 @@ const App = () => {
 
   useEffect(() => {
     axios.get('https://pokeapi.co/api/v2/pokedex/national/').then((res) => {
-      console.log('res', res.data.pokemon_entries)
+      // console.log('res', res.data.pokemon_entries)
       const totalPoke = res.data.pokemon_entries
       setAllPokemon(totalPoke)
       setLoading(false)
     })
   }, [])
 
-  console.log(allPokemon)
+  // console.log(allPokemon)
   return (
     <div className="flex mx-auto justify-center items-center flex-row flex-wrap mt-10 ">
       {loading ? (
