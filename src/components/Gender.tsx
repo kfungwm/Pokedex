@@ -9,7 +9,7 @@ function Gender(props: any) {
   const { data, types } = props
   const gender = data
   const pokeGen = (gender / 8) * 100
-  console.log('type', types[0])
+
   return (
     <div className="flex mx-auto w-full  justify-around gap-2 rounded-lg  bg-white ">
       <div

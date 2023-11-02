@@ -1,22 +1,27 @@
 'use client '
 
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import { getTypeColor } from './TypeColor'
-import { darkenColor } from './DarkerColor'
-import { lightenColor } from './LighterColor'
-import Image from 'next/image'
 
 function Type(props: any) {
   const { data, data2 } = props
   const pokemonInfo = data
   const pokeSpecies = data2
 
+  const englishFlavorTextEntry = pokeSpecies.flavor_text_entries.find(
+    (entry: any) => entry.language.name === 'en'
+  )
+
+  const englishText = englishFlavorTextEntry
+    ? englishFlavorTextEntry.flavor_text
+    : 'No English flavor text found'
+
+  console.log('english', englishText)
+
   return (
     <div className="">
       <div className="text-start mb-2">
         {pokeSpecies.flavor_text_entries.length > 0 ? (
-          pokeSpecies.flavor_text_entries[0].flavor_text
+          englishText
         ) : (
           <span>
             No Data of <span className="capitalize">{pokemonInfo.name}</span>

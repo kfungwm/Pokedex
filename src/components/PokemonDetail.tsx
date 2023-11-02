@@ -13,10 +13,10 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Type from './Type'
 import PokeInfo from './PokeInfo'
+import Evolution from './Evolution'
 
 const App = (props: any) => {
-  const [loading, setLoading] = useState(true)
-  const [pokemonInfo, setPokemonInfo] = useState<{
+  interface pkmn {
     id: number
     name: string
     types: { type: { name: string } }[]
@@ -24,7 +24,19 @@ const App = (props: any) => {
     ability: string
     weight: number
     height: number
-  }>({
+  }
+
+  interface pkmnExtra {
+    genera: any
+    names: { name: string }[]
+    name: string
+    varieties: { variety: { pokemon: string } }[]
+    gender_rate: string
+    evolution_chain: { url: string }
+  }
+
+  const [loading, setLoading] = useState(true)
+  const [pokemonInfo, setPokemonInfo] = useState<pkmn>({
     id: 0,
     name: '',
     types: [],
@@ -33,7 +45,14 @@ const App = (props: any) => {
     weight: 0,
     height: 0,
   })
-  const [pokeSpecies, setPokeSpecies] = useState<any>({})
+  const [pokeSpecies, setPokeSpecies] = useState<pkmnExtra>({
+    genera: '',
+    names: [{ name: '' }],
+    name: '',
+    varieties: [],
+    gender_rate: '',
+    evolution_chain: { url: '' },
+  })
 
   const fetchPokemonData = async () => {
     try {
@@ -147,7 +166,7 @@ const App = (props: any) => {
                   </div>
                   <div className="flex flex-wrap gap-4 p-2 justify-center">
                     {pokeSpecies.varieties.map(
-                      (variety: string, index: number) => {
+                      (variety: any, index: number) => {
                         if (index > 0) {
                           const nameWithSpaces = variety.pokemon.name.replace(
                             /-/g,
@@ -183,12 +202,13 @@ const App = (props: any) => {
             </div>
             <div className="w-full md:w-[500px] flex flex-col gap-5 ">
               <PokeInfo data={pokemonInfo} data2={pokeSpecies} />
-              <div>
-                <Gender
-                  data={pokeSpecies.gender_rate}
-                  types={pokemonInfo.types}
-                />
-              </div>
+
+              <Gender
+                data={pokeSpecies.gender_rate}
+                types={pokemonInfo.types}
+              />
+
+              <Evolution data={pokeSpecies.evolution_chain.url} />
             </div>
           </div>
         </div>
