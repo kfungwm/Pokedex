@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import axios from 'axios'
 import LoadingSpinner from './LoadingSpinner'
 import { getTypeColor } from './TypeColor'
@@ -53,8 +53,7 @@ const App = (props: any) => {
     gender_rate: '',
     evolution_chain: { url: '' },
   })
-
-  const fetchPokemonData = async () => {
+  const fetchPokemonData = useCallback(async () => {
     try {
       const response = await axios.get(
         `https://pokeapi.co/api/v2/pokemon-species/${props.data.id}`
@@ -66,11 +65,7 @@ const App = (props: any) => {
     } catch (error) {
       console.log('Could not fetch data for Pokemon', props.data.id)
     }
-
-    // setAllPokemon(pokemonData)
-    // setLoading(false)
-  }
-
+  }, [props.data.id])
   useEffect(() => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${props.data.id}`)
@@ -80,11 +75,39 @@ const App = (props: any) => {
 
         fetchPokemonData()
       })
-  }, [])
-  console.log(props.data.id)
+  }, [fetchPokemonData, props.data.id])
 
-  console.log('info', pokemonInfo)
-  console.log('info2', pokeSpecies)
+  // const fetchPokemonData = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `https://pokeapi.co/api/v2/pokemon-species/${props.data.id}`
+  //     )
+  //     const pokemonData = response.data
+
+  //     setPokeSpecies(pokemonData)
+  //     setLoading(false)
+  //   } catch (error) {
+  //     console.log('Could not fetch data for Pokemon', props.data.id)
+  //   }
+
+  //   // setAllPokemon(pokemonData)
+  //   // setLoading(false)
+  // }
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://pokeapi.co/api/v2/pokemon/${props.data.id}`)
+  //     .then((res) => {
+  //       const totalPokeInfo = res.data
+  //       setPokemonInfo(totalPokeInfo)
+
+  //       fetchPokemonData()
+  //     })
+  // }, [fetchPokemonData, props.data.id])
+  // console.log(props.data.id)
+
+  // console.log('info', pokemonInfo)
+  // console.log('info2', pokeSpecies)
 
   return (
     <div className="max-w-[1200px] flex mx-auto  gap-5 items-center  mt-10 ">

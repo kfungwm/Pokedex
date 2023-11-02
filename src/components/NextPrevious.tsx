@@ -40,7 +40,7 @@ function PokemonNavigator(data: any) {
         setPrevPokemon({ id: prevDetailsId, name: prevDetailsName })
       }
     })
-  }, [])
+  }, [data.data.id])
 
   return (
     <div
