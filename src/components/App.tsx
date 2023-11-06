@@ -25,7 +25,7 @@ const App = () => {
 
   // console.log(allPokemon)
   return (
-    <div className="flex mx-auto justify-center items-center flex-row flex-wrap mt-10 ">
+    <div className="flex mx-auto justify-center items-center flex-row flex-wrap my-10 ">
       {loading ? (
         <div className="flex h-screen items-center">
           <LoadingSpinner />

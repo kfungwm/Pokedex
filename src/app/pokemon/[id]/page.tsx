@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
 import axios from 'axios'
 import PokemonDetail from '../../../components/PokemonDetail'
+import Footer from '../../../components/Footer'
+import SearchBar from '../../../components/SearchBar'
 
 export async function generateStaticParams() {
   const response = await axios.get('https://pokeapi.co/api/v2/pokedex/national')
@@ -14,9 +16,11 @@ export async function generateStaticParams() {
 
 export default function Page({ params }: { params: { id: string } }) {
   return (
-    <main className="max-w-[1500px] item-center justify-center text-center mx-auto ">
+    <main className="max-w-[1500px] item-center justify-center text-center mx-auto  flex flex-col min-h-screen">
       {/* <div>Hello ID: {params.id}</div> */}
+      <SearchBar />
       <PokemonDetail data={{ id: params.id }} />
+      <Footer />
     </main>
   )
 }
