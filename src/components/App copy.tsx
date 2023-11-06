@@ -4,7 +4,7 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 import axios from 'axios'
-import Pokemon from './Pokemon'
+// import Pokemon from './Pokemon'
 import LoadingSpinner from './LoadingSpinner'
 import { getTypeColor } from './TypeColor'
 
