@@ -66,14 +66,21 @@ function PokemonNavigator(data: any) {
               getTypeColor(data.data.types[0].type.name),
               0.7
             ),
-            backgroundColor: lightenColor(
-              getTypeColor(data.data.types[0].type.name),
-              0.5
-            ),
+            // backgroundColor: lightenColor(
+            //   getTypeColor(data.data.types[0].type.name),
+            //   0.5
+            // ),
           }}
         >
-          <div className=" w-full p-2">
-            {' '}
+          <div
+            className={`w-full p-2 hover:brightness-90 `}
+            style={{
+              backgroundColor: lightenColor(
+                getTypeColor(data.data.types[0].type.name),
+                0.5
+              ),
+            }}
+          >
             <Link href={`/pokemon/${prevPokemon.id}`}>
               <div className="flex">
                 <div className="flex items-center w-1/12 justify-start ">←</div>
@@ -97,17 +104,29 @@ function PokemonNavigator(data: any) {
             </Link>
           </div>
           <div
-            className="border-x-2 p-4 flex items-center"
+            className={`border-x-2 p-4 flex items-center hover:brightness-90`}
             style={{
               borderColor: darkenColor(
                 getTypeColor(data.data.types[0].type.name),
                 0.7
               ),
+              backgroundColor: lightenColor(
+                getTypeColor(data.data.types[0].type.name),
+                0.5
+              ),
             }}
           >
             <Link href="/">Pokemon</Link>
           </div>
-          <div className=" w-full p-2">
+          <div
+            className={`w-full p-2 hover:brightness-90 `}
+            style={{
+              backgroundColor: lightenColor(
+                getTypeColor(data.data.types[0].type.name),
+                0.5
+              ),
+            }}
+          >
             {' '}
             <Link href={`/pokemon/${nextPokemon.id}`}>
               <div className="flex">

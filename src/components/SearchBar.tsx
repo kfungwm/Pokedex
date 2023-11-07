@@ -56,22 +56,22 @@ function SearchBar() {
           onChange={handleINputChange}
           value={searchPokemon}
           type="text"
-          className="border border-[#f3f3f3] bg-[#f3f3f3] outline-none p-3 w-[300px] rounded-3xl"
+          className="border border-[#f3f3f3]  bg-[#f3f3f3] outline-none p-3 w-[300px] rounded-3xl "
           placeholder="Search a Pokemon"
         ></input>{' '}
       </div>
       {searchPokemon.length === 0 ? (
         ''
       ) : (
-        <div className="absolute pt-7  flex-col ease-in duration-200">
-          <div className="relative bg-[#f3f3f3] w-[300px] pt-8 p-4 rounded-b-3xl">
+        <div className="absolute pt-7 flex-col ease-in duration-200">
+          <div className="relative bg-[#f3f3f3]  w-[300px] pt-8 pb-6 rounded-b-3xl">
             <ul className="">
               {updatePokeList(searchPokemon).map((pokemon: any) => (
                 <Link
                   href={`/pokemon/${pokemon.entry_number}`}
                   key={pokemon.entry_number}
                 >
-                  <li className="my-4 flex justify-between items-center">
+                  <li className=" p-4 flex justify-between items-center hover:bg-slate-300">
                     <div className="font-start">#{pokemon.entry_number}</div>
                     <div className="capitalize">{pokemon.name}</div>
                     <div>

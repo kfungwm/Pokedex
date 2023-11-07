@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Image from 'next/image'
+import Link from 'next/link'
 
 function Type(data: any) {
   const url = data.data
@@ -61,18 +62,20 @@ function Type(data: any) {
       <div className="font-bold ">Evolutions</div>
       <div className="flex flex-col md:flex-row items-center ">
         <div>
-          {firstEvo.url && (
-            <Image
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${onlyId(
-                firstEvo.url
-              )}.png`}
-              className=""
-              alt={firstEvo.name}
-              width={80}
-              height={80}
-            />
-          )}
-          <div className="capitalize">{firstEvo.name}</div>
+          <Link href={`/pokemon/${onlyId(firstEvo.url)}`}>
+            {firstEvo.url && (
+              <Image
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${onlyId(
+                  firstEvo.url
+                )}.png`}
+                className=""
+                alt={firstEvo.name}
+                width={80}
+                height={80}
+              />
+            )}
+            <div className="capitalize">{firstEvo.name}</div>
+          </Link>
         </div>
         {secondEvo.length > 0 ? (
           <div className="text-[30px] text-white rotate-90 md:rotate-0 md:m-3">
@@ -91,16 +94,18 @@ function Type(data: any) {
         >
           {secondEvo.map((data: any, index: number) => (
             <div key={index}>
-              <Image
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${onlyId(
-                  data.url
-                )}.png`}
-                className=""
-                alt={data.name}
-                width={80}
-                height={80}
-              />
-              <div className="capitalize">{data.name}</div>
+              <Link href={`/pokemon/${onlyId(data.url)}`}>
+                <Image
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${onlyId(
+                    data.url
+                  )}.png`}
+                  className=""
+                  alt={data.name}
+                  width={80}
+                  height={80}
+                />
+                <div className="capitalize">{data.name}</div>
+              </Link>
             </div>
           ))}
         </div>
@@ -114,16 +119,18 @@ function Type(data: any) {
         <div className="flex justify-center flex-row md:flex-col flex-wrap">
           {thirdEvo.map((data: any, index: number) => (
             <div key={index}>
-              <Image
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${onlyId(
-                  data.url
-                )}.png`}
-                className=""
-                alt={data.name}
-                width={80}
-                height={80}
-              />
-              <div className="capitalize">{data.name}</div>
+              <Link href={`/pokemon/${onlyId(data.url)}`}>
+                <Image
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${onlyId(
+                    data.url
+                  )}.png`}
+                  className=""
+                  alt={data.name}
+                  width={80}
+                  height={80}
+                />
+                <div className="capitalize">{data.name}</div>
+              </Link>
             </div>
           ))}
         </div>

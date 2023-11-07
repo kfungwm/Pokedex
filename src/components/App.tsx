@@ -45,7 +45,7 @@ const App = () => {
             {' '}
             {Object.values(allPokemon).map((pokemon: any, index: number) => (
               <Link href={`/pokemon/${pokemon.entry_number}`} key={index}>
-                <div className="w-[150px] h-[110px] px-3 py-4 bg-white flex m-1 rounded-lg relative justify-center shadow-xl">
+                <div className="w-[150px] h-[110px] px-3 py-4 bg-white hover:bg-slate-200 flex m-1 rounded-lg relative justify-center shadow-xl">
                   {' '}
                   <span className=" text-[#9ca3af] text-xs px-2 pt-1 absolute top-0 right-0">
                     #{pokemon.entry_number}
