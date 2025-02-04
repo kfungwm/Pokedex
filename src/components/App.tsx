@@ -14,13 +14,35 @@ const App = () => {
   const [loading, setLoading] = useState(true)
   const [allPokemon, setAllPokemon] = useState({})
 
+  // useEffect(() => {
+  //   axios.get('https://pokeapi.co/api/v2/pokedex/national/').then((res) => {
+  //     // console.log('res', res.data.pokemon_entries)
+  //     const totalPoke = res.data.pokemon_entries
+  //     setAllPokemon(totalPoke)
+  //     setLoading(false)
+  //   })
+  // }, [])
+
   useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokedex/national/').then((res) => {
-      // console.log('res', res.data.pokemon_entries)
-      const totalPoke = res.data.pokemon_entries
-      setAllPokemon(totalPoke)
+    const storedData = localStorage.getItem('allPokemon')
+    if (storedData) {
+      setAllPokemon(JSON.parse(storedData))
       setLoading(false)
-    })
+    } else {
+      axios
+        .get('https://pokeapi.co/api/v2/pokedex/national/')
+        .then((res) => {
+          const totalPoke = res.data.pokemon_entries
+          setAllPokemon(totalPoke)
+          setLoading(false)
+
+          localStorage.setItem('allPokemon', JSON.stringify(totalPoke))
+        })
+        .catch((error) => {
+          console.error('Error fetching Pokemon data', error)
+          setLoading(false)
+        })
+    }
   }, [])
 
   // console.log(allPokemon)
