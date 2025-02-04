@@ -24,7 +24,7 @@ const App = () => {
   // }, [])
 
   useEffect(() => {
-    const storedData = localStorage.getItem('allPokemon')
+    const storedData = sessionStorage.getItem('allPokemon')
     if (storedData) {
       setAllPokemon(JSON.parse(storedData))
       setLoading(false)
@@ -36,7 +36,7 @@ const App = () => {
           setAllPokemon(totalPoke)
           setLoading(false)
 
-          localStorage.setItem('allPokemon', JSON.stringify(totalPoke))
+          sessionStorage.setItem('allPokemon', JSON.stringify(totalPoke))
         })
         .catch((error) => {
           console.error('Error fetching Pokemon data', error)
